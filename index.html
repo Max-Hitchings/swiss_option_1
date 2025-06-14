@@ -122,21 +122,6 @@
             <p class="text-xs text-gray-400">Hikes, Canyoning, Paragliding</p>
           </div>
         </div>
-
-        <div class="flex justify-center">
-          <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
-            <h3 class="text-xl font-semibold mb-4 text-center">
-              Estimated Cost Breakdown
-            </h3>
-            <p class="text-sm text-gray-500 text-center mb-4">
-              Approximate cost distribution for one person, assuming use of a
-              Swiss Half Fare Card.
-            </p>
-            <div class="chart-container h-80 md:h-96">
-              <canvas id="costChart"></canvas>
-            </div>
-          </div>
-        </div>
       </section>
 
       <div id="activity-checklist" class="mb-16">
@@ -713,38 +698,7 @@
             .classList.add("tab-panel-active");
         });
 
-        const costChartCtx = document
-          .getElementById("costChart")
-          .getContext("2d");
-        new Chart(costChartCtx, {
-          type: "bar",
-          data: {
-            labels: ["Activities", "Lodging", "Transport"],
-            datasets: [
-              {
-                label: "Estimated Cost (CHF)",
-                data: [460, 470, 335],
-                backgroundColor: ["#2563eb", "#60a5fa", "#93c5fd"],
-                borderRadius: 4,
-              },
-            ],
-          },
-          options: {
-            indexAxis: "y",
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false },
-              tooltip: {
-                callbacks: { label: (context) => `Est. CHF ${context.raw}` },
-              },
-            },
-            scales: {
-              x: { beginAtZero: true, grid: { display: false } },
-              y: { grid: { display: false } },
-            },
-          },
-        });
+        // Removed the cost chart script
 
         // FIX: Changed selector to exclude href="#" links to prevent error
         document
