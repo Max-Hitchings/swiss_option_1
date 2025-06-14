@@ -1,6 +1,12 @@
+name = "swiss-adventure"
+compatibility_date = "2025-06-14"
+
 [site]
 bucket = "./public"
 entry-point = "."
 
 [build]
-command = "" 
+command = ""
+
+[assets]
+directory = "./public" 
