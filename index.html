@@ -109,15 +109,8 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4 text-center">Activity Priorities</h3>
-                    <p class="text-sm text-gray-500 text-center mb-4">This chart shows the breakdown of planned activities by their priority level, highlighting the trip's focus on high-priority, must-do experiences.</p>
-                    <div class="chart-container">
-                        <canvas id="priorityChart"></canvas>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex justify-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
                     <h3 class="text-xl font-semibold mb-4 text-center">Estimated Cost Breakdown</h3>
                     <p class="text-sm text-gray-500 text-center mb-4">This chart visualizes the approximate cost distribution between key categories for one person using the Swiss Half Fare Card, helping to understand the budget.</p>
                      <div class="chart-container h-80 md:h-96">
@@ -584,37 +577,6 @@ document.addEventListener('DOMContentLoaded', () => {
             panel.classList.remove('tab-panel-active');
         });
         document.getElementById(clickedTab.dataset.tab).classList.add('tab-panel-active');
-    });
-
-    const priorityChartCtx = document.getElementById('priorityChart').getContext('2d');
-    new Chart(priorityChartCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['P5: Must Include', 'P4: Should Include', 'P3: Good to Have', 'P2: Nice Extra'],
-            datasets: [{
-                label: 'Activity Priorities',
-                data: [4, 1, 6, 2],
-                backgroundColor: ['#1d4ed8', '#2563eb', '#60a5fa', '#93c5fd'],
-                borderColor: '#f8fafc',
-                borderWidth: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return `${context.label}: ${context.raw} activities`;
-                        }
-                    }
-                }
-            }
-        }
     });
 
     const costChartCtx = document.getElementById('costChart').getContext('2d');
