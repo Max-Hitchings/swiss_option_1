@@ -1,0 +1,6 @@
+[site]
+bucket = "./public"
+entry-point = "."
+
+[build]
+command = "" 
