@@ -1,6 +1,7 @@
 name = "swiss-adventure"
 compatibility_date = "2025-06-14"
 
+main = "./index.js"
 [site]
 bucket = "./public"
 
