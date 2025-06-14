@@ -1,12 +1,11 @@
 name = "swiss-adventure"
 compatibility_date = "2025-06-14"
 
-main = "./index.js"
 [site]
 bucket = "./public"
 
 [build]
 command = ""
 
-[assets]
-directory = "./public" 
+[pages]
+pages_build_output_dir = "./public"
