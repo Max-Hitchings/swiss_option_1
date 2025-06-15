@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate 7-Day Switzerland Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+        }
+        .tab-active {
+            border-color: #2563eb; /* blue-600 */
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            border-color: transparent;
+            color: #4b5563; /* gray-600 */
+        }
+        .tab-panel { display: none; }
+        .tab-panel-active { display: block; }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="text-xl font-bold text-blue-600">Swiss Adventure '25</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#overview" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Overview</a>
+                        <a href="#itinerary" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Itinerary</a>
+                        <a href="#bookings" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Bookings</a>
+                        <a href="#logistics" class="text-gray-600 hover:bg-gray-100 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Logistics</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <section id="hero" class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">The Ultimate Swiss Adventure</h1>
+            <p class="mt-4 text-lg text-gray-600">Jack Max Poppy Molly - 7 Days of Epic Hikes, Adrenaline, and Alpine Views</p>
+            <p class="mt-2 text-md font-medium text-blue-600">August 29 – September 4, 2025</p>
+        </section>
+
+        <section id="overview" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b pb-2">Trip Dashboard</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-sm font-medium text-gray-500">Duration</p>
+                    <p class="text-3xl font-bold text-blue-600">7 Days</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-sm font-medium text-gray-500">Core Base Areas</p>
+                    <p class="text-3xl font-bold text-blue-600">3 Areas</p>
+                     <p class="text-xs text-gray-400">Zurich, Mürren, Interlaken</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-sm font-medium text-gray-500">Highest Point</p>
+                    <p class="text-3xl font-bold text-blue-600">2,840 m</p>
+                    <p class="text-xs text-gray-400">Blüemlisalphütte</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow">
+                    <p class="text-sm font-medium text-gray-500">Key Adventures</p>
+                    <p class="text-3xl font-bold text-blue-600">6+</p>
+                    <p class="text-xs text-gray-400">Hikes, Canyoning, Paragliding</p>
+                </div>
+            </div>
+        </section>
+        
+        <div id="activity-checklist" class="mb-16">
+             <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b pb-2">Activity Checklist</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        What's In The Plan
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">2-3 Day Hut Hike (P5)</strong><br><small class="text-gray-500">The core mountain experience.</small></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Canyoning (P5)</strong><br><small class="text-gray-500">A top-priority adrenaline rush.</small></div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Lindt Chocolate Museum (P5)</strong><br><small class="text-gray-500">A must-do for chocolate lovers.</small></div>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Float the Limmat (P4)</strong><br><small class="text-gray-500">A classic Zurich summer activity.</small></div>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Paragliding Flight (P3)</strong><br><small class="text-gray-500">Soar over the lakes and mountains.</small></div>
+                        </li>
+                         <li class="flex items-start">
+                           <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Mountain Carting (P3)</strong><br><small class="text-gray-500">Included in the Grindelwald First package.</small></div>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Boat Day / Rhine Falls (P3)</strong><br><small class="text-gray-500">Lake Brienz cruise and Rhine Falls option.</small></div>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Oeschinensee Visit (P3)</strong><br><small class="text-gray-500">Hike down to this beautiful alpine lake.</small></div>
+                        </li>
+                         <li class="flex items-start">
+                           <span class="text-green-500 font-bold text-xl mr-3 mt-1">✓</span>
+                            <div><strong class="text-gray-800">Zip Line (P1)</strong><br><small class="text-gray-500">The First Flyer is part of the Day 6 plan.</small></div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                     <h3 class="text-xl font-bold text-gray-600 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+                        Not In The Plan (Optional Extras)
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-gray-400 font-bold text-xl mr-3 mt-1">★</span>
+                            <div><strong class="text-gray-800">Bungee Jump (P2)</strong><br><small class="text-gray-500">An alternative high-thrill activity.</small></div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-gray-400 font-bold text-xl mr-3 mt-1">★</span>
+                            <div><strong class="text-gray-800">Fondue Sunset Cruise (P2)</strong><br><small class="text-gray-500">An option for dinner on Day 5.</small></div>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-gray-400 font-bold text-xl mr-3 mt-1">★</span>
+                            <div><strong class="text-gray-800">SUP or Badi Swim (P3)</strong><br><small class="text-gray-500">Could be swapped for the boat cruise on Day 5.</small></div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-gray-400 font-bold text-xl mr-3 mt-1">★</span>
+                            <div><strong class="text-gray-800">Open-air Cinema (P1)</strong><br><small class="text-gray-500">A low-priority evening activity in Zurich.</small></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section id="itinerary" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2">Daily Itinerary</h2>
+            <p class="text-gray-600 mb-8">Click on a day to expand and see the detailed plan. 🎯 denotes a high-priority activity.</p>
+            <div id="itinerary-container" class="space-y-4">
+            </div>
+        </section>
+
+        <section id="bookings" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2">Critical Bookings Tracker</h2>
+             <p class="text-gray-600 mb-8">This is your action plan. Use this tracker to ensure everything is secured well in advance.</p>
+            <div class="bg-white rounded-lg shadow-lg overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="p-4 font-semibold">Item</th>
+                            <th class="p-4 font-semibold">Booking Window</th>
+                            <th class="p-4 font-semibold">Est. Cost (p.p.)</th>
+                            <th class="p-4 font-semibold">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 font-medium">Rotstockhütte & Blüemlisalphütte</td>
+                            <td class="p-4">ASAP! Huts open booking early and fill fast.</td>
+                            <td class="p-4">~CHF 85/night</td>
+                            <td class="p-4"><span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Most Critical</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 font-medium">Canyoning (e.g. Outdoor Interlaken)</td>
+                            <td class="p-4">3-4 months out (May/June 2025)</td>
+                            <td class="p-4">~CHF 200</td>
+                             <td class="p-4"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">High Priority</span></td>
+                        </tr>
+                         <tr class="hover:bg-slate-50">
+                            <td class="p-4 font-medium">Paragliding (e.g. Paragliding Interlaken)</td>
+                            <td class="p-4">3-4 months out (May/June 2025)</td>
+                            <td class="p-4">~CHF 180</td>
+                             <td class="p-4"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">High Priority</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-4 font-medium">Lindt Chocolate Museum & Course</td>
+                            <td class="p-4">1-2 months out (July 2025)</td>
+                            <td class="p-4">~CHF 50</td>
+                            <td class="p-4"><span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Important</span></td>
+                        </tr>
+                         <tr class="hover:bg-slate-50">
+                            <td class="p-4 font-medium">Accommodation (Zurich/Interlaken)</td>
+                            <td class="p-4">6-9 months out for best choice/price</td>
+                            <td class="p-4">Varies</td>
+                             <td class="p-4"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">High Priority</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="logistics" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2 border-b pb-2">Logistics & Preparation</h2>
+            <p class="text-gray-600 mb-8">All the essential non-daily information is here. Use the tabs to switch between sections.</p>
+            
+            <div class="mb-4 border-b border-gray-200">
+                <nav id="tabs-nav" class="-mb-px flex space-x-6" aria-label="Tabs">
+                </nav>
+            </div>
+
+            <div id="tabs-content">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t mt-16">
+        <div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            <p>&copy; 2025 Swiss Adventure. Have an epic trip!</p>
+        </div>
+    </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const itineraryData = [
+         {
+            day: 1, date: "Fri, Aug 29", title: "Zurich Arrival, Chocolate & City Stroll", base: "Zurich", icon: "🍫",
+            content: `
+                <div class="space-y-4">
+                    <div><h4 class="font-semibold text-lg">Morning (10:00 - 13:00)</h4> <p>🛬 Land at ZRH, clear customs. Take 15-min 🚆 train to Zurich HB. Drop luggage at your hotel.</p></div>
+                    <div><h4 class="font-semibold text-lg">Afternoon (13:00 - 18:00)</h4> <p>🍫 <strong>Lindt Home of Chocolate 🎯</strong>: Tour the museum and enjoy unlimited tastings. <br>💧 <strong>Limmat River Float</strong>: A classic Zurich summer activity, float gently down the river.</p></div>
+                    <div><h4 class="font-semibold text-lg">Evening (18:00 onwards)</h4> <p>🚶‍♂️ Explore the <strong>Altstadt (Old Town)</strong> and walk up Lindenhof Hill for city views. <br>🍻 <strong>Dinner</strong>: Traditional meal at Zeughauskeller or fondue at Swiss Chuchi.</p></div>
+                </div>`
+        },
+        {
+            day: 2, date: "Sat, Aug 30", title: "Into the Alps: Mürren & Hut Hike Begins", base: "Rotstockhütte", icon: "🏔️",
+            content: `
+                <div class="space-y-4">
+                    <div><h4 class="font-semibold text-lg">Morning (08:00 - 11:00)</h4><p>🚆 Depart Zurich for Lauterbrunnen (~2h 20m). Leave main luggage in Interlaken lockers. <br>🚠 Ascend to car-free Mürren village.</p></div>
+                    <div><h4 class="font-semibold text-lg">Afternoon (11:00 - 16:00)</h4><p>🥾 <strong>Hike to Rotstockhütte 🎯</strong>: A moderate 2.5-hour hike from Mürren with constant, jaw-dropping views of the Eiger, Mönch, and Jungfrau.</p></div>
+                    <div><h4 class="font-semibold text-lg">Evening (16:00 onwards)</h4><p>🛖 Relax at the cozy alpine hut. Enjoy a hearty dinner and incredible stargazing. No cell service, just pure mountain tranquility.</p></div>
+                </div>`
+        },
+        {
+            day: 3, date: "Sun, Aug 31", title: "Epic Trek: Over Sefinenfurgge Pass", base: "Blüemlisalphütte", icon: "🧗",
+            content: `
+                <div class="space-y-4">
+                    <div><h4 class="font-semibold text-lg">Full Day (08:00 - 17:00)</h4><p>🥾 <strong>The Hardest Day</strong>: A challenging but rewarding 8-9 hour trek. <br>🏔️ Cross the <strong>Sefinenfurgge Pass (2,612m)</strong>, descend to Griesalp for lunch, then tackle the steep ~1,370m ascent to the <strong>Blüemlisalp Hut (2,840m)</strong>.</p></div>
+                    <div><h4 class="font-semibold text-lg">Evening (17:00 onwards)</h4><p>🏨 Check into the hut, perched dramatically above a glacier. <br>🌅 <strong>Experience</strong>: Witness one of the most epic sunsets in the Alps. This view is your reward!</p></div>
+                </div>`
+        },
+        {
+            day: 4, date: "Mon, Sep 1", title: "Alpine Lake Descent & Back to Interlaken", base: "Interlaken", icon: "🛶",
+            content: `
+                <div class="space-y-4">
+                     <div><h4 class="font-semibold text-lg">Morning (08:00 - 12:00)</h4><p>🌄 After sunrise, begin the 3-4 hour descent from the hut to the stunningly beautiful <strong>Oeschinensee</strong>. <br>🚣‍♂️ Enjoy the turquoise alpine lake, maybe rent a rowboat or try the summer toboggan run.</p></div>
+                     <div><h4 class="font-semibold text-lg">Afternoon (12:00 - 16:00)</h4><p>🚠 Gondola down to Kandersteg village. <br>🚆 Catch a train to Interlaken (~1h 20m), check into your hotel and retrieve stored luggage.</p></div>
+                     <div><h4 class="font-semibold text-lg">Evening (16:00 onwards)</h4><p>🧖 Relax and recover from the trek. Optional: Take the funicular up to <strong>Harder Kulm</strong> for spectacular sunset views over Interlaken.</p></div>
+                </div>`
+        },
+        {
+            day: 5, date: "Tue, Sep 2", title: "Adrenaline Day: Canyoning & Lake Brienz", base: "Interlaken", icon: "🌊",
+            content: `
+                <div class="space-y-4">
+                    <div><h4 class="font-semibold text-lg">Morning (09:00 - 14:00)</h4><p>🌊 <strong>Canyoning in Grimsel 🎯</strong>: A guided tour where you'll rappel, slide, and jump through an alpine canyon. A top-tier adrenaline rush.</p></div>
+                    <div><h4 class="font-semibold text-lg">Afternoon (14:00 - 18:00)</h4><p>💧 Unwind on the turquoise <strong>Lake Brienz</strong>. Options: a scenic boat cruise to Giessbach Falls or SUP/kayaking.</p></div>
+                    <div><h4 class="font-semibold text-lg">Evening (18:00 onwards)</h4><p>🧀 Treat yourselves to a memorable dinner. Consider a sunset cruise on Lake Thun or a classic Swiss cheese fondue in Interlaken.</p></div>
+                </div>`
+        },
+        {
+            day: 6, date: "Wed, Sep 3", title: "Grindelwald Adventures & Soaring High", base: "Zurich", icon: "🪂",
+            content: `
+                <div class="space-y-4">
+                    <div><h4 class="font-semibold text-lg">Morning (08:00 - 13:00)</h4><p>🏞️ <strong>Grindelwald First</strong>: Experience the Cliff Walk, then descend via the <strong>First Flyer</strong> (zipline), <strong>Mountain Carts</strong>, and <strong>Trottibike Scooters</strong>.</p></div>
+                    <div><h4 class="font-semibold text-lg">Afternoon (14:00 - 17:00)</h4><p>🪂 <strong>Paragliding over Interlaken 🎯</strong>: Head back for a tandem flight. Soar silently over the lakes and mountains for unforgettable views.</p></div>
+                    <div><h4 class="font-semibold text-lg">Evening (17:00 onwards)</h4><p>🚆 Catch an early evening train back to Zürich (~2 hours). Check in and enjoy a final Swiss dinner.</p></div>
+                </div>`
+        },
+        {
+            day: 7, date: "Thu, Sep 4", title: "Final Views & Departure", base: "N/A", icon: "✈️",
+            content: `
+                <div class="space-y-4">
+                    <div><h4 class="font-semibold text-lg">Morning (09:00 - 13:00)</h4><p>⛰️ <strong>Option A</strong>: Take a quick trip to <strong>Rhine Falls</strong>, Europe's largest waterfall. <br>🏙️ <strong>Option B</strong>: Stay in Zurich for last-minute shopping or a museum visit.</p></div>
+                    <div><h4 class="font-semibold text-lg">Afternoon (13:00 - 16:00)</h4><p>🛍️ Enjoy a final Swiss lunch and collect your luggage. <br>🚆 Take the 15-min train from Zurich HB to Zurich Airport (ZRH).</p></div>
+                    <div><h4 class="font-semibold text-lg">Departure (16:00)</h4><p>✈️ Arrive by 16:00 for your 18:00 flight home. Auf Wiedersehen!</p></div>
+                </div>`
+        },
+    ];
+
+    const tabsData = [
+        { 
+            id: 'transport', 
+            title: 'Transport Passes', 
+            content: `
+                <p class="mb-4">For this itinerary, the <strong>Swiss Half Fare Card (CHF 120)</strong> is the best value. It gives you 50% off almost all trains, buses, boats, and mountain cable cars. It will likely pay for itself very quickly.</p>
+                <div class="mt-4 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                    <p class="font-semibold">Pro Tip: Download the SBB Mobile App. You can buy all your half-price tickets directly in the app and never need to visit a ticket machine.</p>
+                </div>
+            ` 
+        },
+        { 
+            id: 'packing', 
+            title: 'Packing List', 
+            content: `
+                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-lg mb-2">Key Clothing</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>Waterproof shell jacket & pants</li>
+                            <li>Packable warm layer (fleece/down)</li>
+                            <li>Moisture-wicking shirts (no cotton!)</li>
+                            <li>Sturdy hiking pants</li>
+                            <li>Swimsuit</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg mb-2">Essential Footwear</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                           <li>Broken-in waterproof hiking boots</li>
+                           <li>Comfortable city/travel shoes</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg mb-2">Must-Have Gear</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>30-40L backpack for trek</li>
+                            <li><strong>Sleeping bag liner (required for huts)</strong></li>
+                            <li>Trekking poles & Headlamp</li>
+                            <li>Power bank & Swiss travel adapter (Type J)</li>
+                            <li>Sunscreen & first-aid kit</li>
+                        </ul>
+                    </div>
+                </div>
+            ` 
+        },
+        { 
+            id: 'backup', 
+            title: 'Backup Plans', 
+            content: `
+                <div>
+                    <h4 class="font-bold text-lg mb-2">Weather-Proofing Your Adventure</h4>
+                    <p class="mb-4 text-gray-600">The Alps have unpredictable weather. If a primary activity is cancelled, pivot to these options.</p>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg border">
+                            <h5 class="font-semibold">If High Mountain Trek is Not Possible:</h5>
+                            <p class="text-sm text-gray-600">Base in Lauterbrunnen or Interlaken and do lower-elevation day hikes (e.g., Männlichen to Kleine Scheidegg trail) or take the GoldenPass scenic train to Montreux for the day.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border">
+                            <h5 class="font-semibold">If Canyoning/Paragliding is Cancelled:</h5>
+                            <p class="text-sm text-gray-600">Most operators will try to reschedule. Alternative thrills include white-water rafting on the Lütschine River, the Mürren Via Ferrata, or an indoor climbing gym.</p>
+                        </div>
+                    </div>
+                </div>
+            ` 
+        },
+        { 
+            id: 'protips', 
+            title: 'Pro Tips', 
+            content: `
+                 <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start">
+                        <span class="text-blue-500 font-bold mr-3">1.</span>
+                        <span><strong>Book Key Items Early:</strong> Mountain huts, paragliding, and canyoning can be fully booked months in advance. Reserve them as soon as your dates are firm.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-500 font-bold mr-3">2.</span>
+                        <span><strong>Use Luggage Lockers:</strong> Use lockers (\`Schliessfach\`) at major train stations (Zurich, Interlaken) to store bags and travel light on day trips.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-500 font-bold mr-3">3.</span>
+                        <span><strong>Greet Everyone on Trails:</strong> A friendly "Grüezi" (hello in Swiss German) to fellow hikers is customary and appreciated.</span>
+                    </li>
+                     <li class="flex items-start">
+                        <span class="text-blue-500 font-bold mr-3">4.</span>
+                        <span><strong>Eat Smart:</strong> For a budget-friendly lunch, grab sandwiches or salads from Coop or Migros supermarket restaurants.</span>
+                    </li>
+                </ul>
+            ` 
+        },
+    ];
+
+    const itineraryContainer = document.getElementById('itinerary-container');
+    itineraryData.forEach(day => {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'bg-white rounded-lg shadow-md overflow-hidden';
+        dayElement.innerHTML = `
+            <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left hover:bg-slate-50 focus:outline-none">
+                <div class="flex items-center">
+                    <span class="text-2xl mr-4">${day.icon}</span>
+                    <div>
+                        <p class="text-xs text-blue-600 font-semibold">DAY ${day.day} - ${day.date}</p>
+                        <h3 class="font-bold text-lg text-gray-900">${day.title}</h3>
+                        <p class="text-sm text-gray-500">Base: ${day.base}</p>
+                    </div>
+                </div>
+                <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="accordion-content">
+                <div class="p-6 border-t border-slate-200 bg-slate-50">
+                    ${day.content}
+                </div>
+            </div>
+        `;
+        itineraryContainer.appendChild(dayElement);
+    });
+    
+    document.querySelectorAll('.accordion-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.classList.remove('rotate-180');
+            } else {
+                // Optional: Close other accordions when one opens
+                // document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+                // document.querySelectorAll('.accordion-toggle svg').forEach(i => i.classList.remove('rotate-180'));
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.classList.add('rotate-180');
+            }
+        });
+    });
+
+    const tabsNav = document.getElementById('tabs-nav');
+    const tabsContent = document.getElementById('tabs-content');
+    tabsData.forEach((tab, index) => {
+        const navItem = document.createElement('a');
+        navItem.href = '#';
+        navItem.dataset.tab = tab.id;
+        navItem.className = `tab-link border-b-2 py-2 px-1 text-sm font-medium transition-colors duration-200 ${index === 0 ? 'tab-active' : 'tab-inactive'}`;
+        navItem.textContent = tab.title;
+        tabsNav.appendChild(navItem);
+
+        const contentItem = document.createElement('div');
+        contentItem.id = tab.id;
+        contentItem.className = `tab-panel p-4 bg-white rounded-lg shadow ${index === 0 ? 'tab-panel-active' : ''}`;
+        contentItem.innerHTML = tab.content;
+        tabsContent.appendChild(contentItem);
+    });
+
+    tabsNav.addEventListener('click', (e) => {
+        e.preventDefault();
+        const clickedTab = e.target.closest('.tab-link');
+        if (!clickedTab) return;
+
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.classList.remove('tab-active');
+            link.classList.add('tab-inactive');
+        });
+        clickedTab.classList.add('tab-active');
+        clickedTab.classList.remove('tab-inactive');
+
+        document.querySelectorAll('.tab-panel').forEach(panel => {
+            panel.classList.remove('tab-panel-active');
+        });
+        document.getElementById(clickedTab.dataset.tab).classList.add('tab-panel-active');
+    });
+
+    // Removed the cost chart script
+
+    // FIX: Changed selector to exclude href="#" links to prevent error
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+});
+</script>
+
+</body>
+</ht
